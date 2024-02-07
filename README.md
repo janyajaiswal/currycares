@@ -1,2 +1,0 @@
-# currycares
-SDP project
