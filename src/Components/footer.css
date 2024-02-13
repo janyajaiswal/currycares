@@ -1,0 +1,35 @@
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.footer p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links a {
+  display: inline-block;
+  margin: 0 10px;
+  color: #666;
+  font-size: 24px;
+}
+
+.social-links a:hover {
+  color: #333;
+}
