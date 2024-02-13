@@ -1,5 +1,5 @@
 .footer {
-  background-color: #f8f9fa;
+  background-color: #e0b816;
   padding: 20px 0;
   text-align: center;
 }
@@ -16,18 +16,33 @@
 
 .footer p {
   font-size: 1rem;
-  color: #666;
+  color: #000000;
 }
 
 .social-links {
   margin-top: 20px;
+  background-color: beige;
+  width: auto;
 }
 
 .social-links a {
   display: inline-block;
   margin: 0 10px;
-  color: #666;
   font-size: 24px;
+}
+
+#meta
+{
+    color: #316FF6;
+}
+#x
+{
+ color: #000000;
+}
+
+#insta
+{
+ color: #b82aba;
 }
 
 .social-links a:hover {
