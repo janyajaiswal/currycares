@@ -1,0 +1,51 @@
+.footer {
+  background-color: #e0b816;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%; /* Make footer span the whole page width */
+}
+
+.footer-content {
+  max-width: 1200px; /* Increase max-width for larger screens */
+  margin: 0 auto; /* Center the content */
+}
+
+.footer h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.footer p {
+  font-size: 1rem;
+  color: #000000;
+}
+
+.social-links {
+  margin-top: 20px;
+  background-color: beige;
+  width: auto;
+  display: flex; /* Use flexbox for better alignment */
+  justify-content: center; /* Center the social links horizontally */
+}
+
+.social-links a {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 24px;
+}
+
+#meta {
+  color: #316FF6;
+}
+
+#x {
+  color: #000000;
+}
+
+#insta {
+  color: #b82aba;
+}
+
+.social-links a:hover {
+  color: #333;
+}
