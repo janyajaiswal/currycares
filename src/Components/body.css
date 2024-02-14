@@ -1,0 +1,41 @@
+.banner-container {
+    display: flex;
+    justify-content: center; /* Aligns the content horizontally */
+    align-items: center; /* Aligns the content vertically */
+    height: 80vh; /* Adjust this height based on your design */
+  }
+  
+  .banner-container img {
+    max-width: 100%; /* Ensures the image doesn't exceed the container width */
+    max-height: 80%; /* Ensures the image doesn't exceed the container height */
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap; /* Allows blocks to wrap to the next line if needed */
+    justify-content: center; /* Aligns blocks horizontally */
+    margin-top: 20px; /* Adjust spacing between banner and blocks */
+  }
+  
+  .block {
+    width: 200px; /* Adjust block width as needed */
+    height: 200px; /* Adjust block height as needed */
+    margin: 10px; /* Adjust block margin as needed */
+    background-color: #f0f0f0; /* Adjust block background color as needed */
+    animation: moveBlocks 10s linear infinite; /* Adjust animation duration as needed */
+  }
+  
+  @keyframes moveBlocks {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .block img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
