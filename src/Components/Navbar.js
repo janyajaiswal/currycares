@@ -12,7 +12,14 @@ export default function Navbar() {
             <Link to="/">
             <img src={logo2} width='50px' height='50px' alt="Curry Cares Logo" className="dib at" />
             Curry Cares
-            </Link>
+          </Link>
+          
+        <div className="search-container">
+          <input type="text" placeholder="Search..." className="search-bar" />
+          <button type="submit" className="search-button">
+            <i className="fas fa-search"></i>
+          </button>
+        </div>
                   
         <div className="navlinks">
             <ul className="ulist">

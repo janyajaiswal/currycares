@@ -1,5 +1,8 @@
 import React from 'react';
-import banner from '/Users/janyajaiswal/Desktop/SDP/currycares/src/images/banner.png';
+import banner from '/Users/janyajaiswal/Desktop/SDP/currycares/src/images/banner.png'
+import pizza from '/Users/janyajaiswal/Desktop/SDP/currycares/src/images/biryani.png';
+import biryani from '/Users/janyajaiswal/Desktop/SDP/currycares/src/images/curry.png';
+import curry from '/Users/janyajaiswal/Desktop/SDP/currycares/src/images/pizza.png';
 import './body.css';
 
 export default function Body() {
@@ -11,13 +14,13 @@ export default function Body() {
 
       <div className="container">
         <div className="block">
-          <img src="mushroom.jpeg" alt="Image 1"/>
+          <img src={biryani} alt="Image 1"/>
         </div>
         <div className="block">
-          <img src="pizza.jpeg" alt="Image 2"/>
+          <img src={pizza} alt="Image 2"/>
         </div>
         <div className="block">
-          <img src="chicken.jpg" alt="Image 3"/>
+          <img src={curry} alt="Image 3"/>
         </div>
       </div>
     </div>
