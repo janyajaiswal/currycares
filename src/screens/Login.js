@@ -42,7 +42,7 @@ export default function LoginPage() {
           />
         </div>
         <button type="button" onClick={handleLogin}>Login</button>
-      </form>
-    </div>
+        </form>
+        </div>
   );
 }
