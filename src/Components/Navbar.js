@@ -1,5 +1,5 @@
 import React from 'react';
-import logo2 from '/Users/janyajaiswal/Desktop/SDP/currycares/currycares/src/Components/logo2.png';
+import logo2 from '/Users/janyajaiswal/Desktop/SDP/currycares/src/images/logo2.png';
 import './Navbar.css';
 import { Link } from 'react-router-dom'
 

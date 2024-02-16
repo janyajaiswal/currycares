@@ -1,5 +1,5 @@
 import React from 'react';
-import banner from '/Users/janyajaiswal/Desktop/SDP/currycares/currycares/src/Components/banner.png';
+import banner from '/Users/janyajaiswal/Desktop/SDP/currycares/src/images/banner.png';
 import './body.css';
 
 export default function Body() {
