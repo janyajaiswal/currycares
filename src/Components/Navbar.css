@@ -1,10 +1,9 @@
 /* Navbar.css */
-
 .nav {
   background-color: #e0b816; /* Background color of the navbar */
   padding: 10px 20px; /* Padding around the navbar */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Ensure elements are spaced evenly */
   align-items: center;
   position: fixed; /* Make navbar fixed to the top */
   top: 0; /* Stick navbar to the top */
@@ -17,7 +16,7 @@
   display: flex;
   align-items: center;
   font-size: 30px; /* Font size of the logo text */
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .logo img {
@@ -32,10 +31,11 @@
   display: flex;
   align-items: center;
 }
+
 /*-------------------SEARCH BAR-------------------------*/
 .search-container {
   position: absolute;
-  right: 20px; /* Adjust the distance from the right side */
+  right: 20px; /* Adjust as needed */
   display: flex;
   align-items: center;
 }
@@ -44,22 +44,23 @@
   border: 2px solid #a020f0; /* Purple outline */
   border-radius: 5px; /* Add some border radius */
   padding: 8px 10px; /* Adjust padding for better spacing */
-  margin-right: 10px; /* Add some spacing between search bar and button */
+  width: 150px; /* Adjust width as needed */
 }
 
 .search-button {
-  color: #440b67; /* Purple background for the button */
+  background-color: #a020f0; /* Change background color to purple */
   color: white; /* Text color of the button */
-  width: 100px;
+  border: none; /* Remove border */
+  padding: 8px 10px; /* Match padding with search bar */
   cursor: pointer; /* Add pointer cursor on hover */
 }
-
-.search-button :hover{
-  color: #a020f0;
+.search-button:hover {
+  background-color: #440b67; /* Darker shade of purple on hover */
 }
 
+
 /*-------------------LINKS-----------------------*/
-.navlinks{
+.navlinks {
   text-align: right;
   font-weight: lighter;
 }
@@ -71,12 +72,12 @@
   display: flex;
 }
 
-.ulist li{
+.ulist li {
   margin-left: 20px; /* Add spacing between navbar items */
 }
 
 .pdln {
-  color:#000000; /* Color of the navbar links */
+  color: #000000; /* Color of the navbar links */
   text-decoration: none; /* Remove underline from the navbar links */
   font-size: 16px; /* Font size of the navbar links */
 }

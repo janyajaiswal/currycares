@@ -24,13 +24,16 @@ export default function Navbar() {
         <div className="navlinks">
             <ul className="ulist">
               <li className="item">
-                <Link className="pdln" to="/">Orders</Link>
+                <Link className="pdln" to="/Orders">Orders</Link>
               </li>
               <li className="item">
-                <Link className="pdln" to="/">Profile</Link>
+                <Link className="pdln" to="/Profile">Profile</Link>
               </li>
               <li className="item">
                 <Link className="pdln" to="/Login">Login</Link>
+              </li>
+              <li className="item">
+                <Link className="pdln" to="/CreateUser">Create User</Link>
               </li>
             </ul>
           </div>
