@@ -33,7 +33,7 @@ export default function Navbar() {
                 <Link className="pdln" to="/Login">Login</Link>
               </li>
               <li className="item">
-                <Link className="pdln" to="/CreateUser">Create User</Link>
+                <Link className="pdln" to="/SignUp">SignUp</Link>
               </li>
             </ul>
           </div>
