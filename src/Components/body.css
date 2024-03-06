@@ -14,7 +14,7 @@
 
 }
 
-.container {
+.container-body {
   display: flex;
   flex-wrap: wrap; /* Allows blocks to wrap to the next line if needed */
   justify-content: center; /* Aligns blocks horizontally */

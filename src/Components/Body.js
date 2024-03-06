@@ -12,7 +12,7 @@ export default function Body() {
         <img src={banner} alt="Curry Cares Banner"/>
       </div>
 
-      <div className="container">
+      <div className="container-body">
         <div className="block">
           <img src={biryani} alt="Image 1"/>
         </div>
