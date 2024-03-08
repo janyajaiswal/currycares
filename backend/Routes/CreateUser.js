@@ -13,28 +13,30 @@ const passwordValidator = (value) => {
 
 router.post('/createuser',
     [
-        body('email','The email you entered is not recognized').isEmail(),
-        body('password').custom(passwordValidator)
+        body('email', 'The email you entered is not recognized').isEmail(),
+        body('password').custom(passwordValidator),
+        // Add validation for other fields if necessary
+        // body('name').notEmpty(),
+        // body('location').notEmpty()
     ],
     async (req, res) => {
-        
+        try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() });
             }
-        try {
 
             await User.create({
                 name: req.body.name,
                 password: req.body.password,
                 email: req.body.email,
                 location: req.body.location
+            });
 
-            }).then(res.json({ success: true }))
-
+            res.json({ success: true });
         } catch (error) {
-            console.log(error);
-            res.json({ success: false});
+            console.error(error);
+            res.status(500).json({ success: false, error: 'Internal Server Error' });
         }
     }
 );
