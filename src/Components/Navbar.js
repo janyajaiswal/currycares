@@ -30,9 +30,6 @@ export default function Navbar() {
                 <Link className="pdln" to="/Profile">Profile</Link>
               </li>
               <li className="item">
-                <Link className="pdln" to="/Login">Login</Link>
-              </li>
-              <li className="item">
                 <Link className="pdln" to="/SignUp">SignUp</Link>
               </li>
             </ul>

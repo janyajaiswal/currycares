@@ -6,7 +6,7 @@ const connectToDB = async () => {
     await mongoose.connect(mongoURI, {});
     console.log('Connected to MongoDB');
 
-    const collection = mongoose.connection.db.collection("BackendDB");
+    const collection = mongoose.connection.db.collection("users");
     const fetchedData = await collection.find({}).toArray();
     console.log(fetchedData);
   } catch (error) {

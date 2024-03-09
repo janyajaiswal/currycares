@@ -15,9 +15,8 @@ router.post('/createuser',
     [
         body('email', 'The email you entered is not recognized').isEmail(),
         body('password').custom(passwordValidator),
-        // Add validation for other fields if necessary
-        // body('name').notEmpty(),
-        // body('location').notEmpty()
+        body('name').notEmpty(),
+        body('location').notEmpty()
     ],
     async (req, res) => {
         try {
@@ -34,6 +33,38 @@ router.post('/createuser',
             });
 
             res.json({ success: true });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ success: false, error: 'Internal Server Error' });
+        }
+    }
+);
+
+router.post('/loginuser',
+    [
+    body('email', 'The email you entered is not recognized').isEmail(),
+    body('password').custom(passwordValidator),
+    ],
+    async (req, res) => {
+
+        const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array() });
+            }
+        
+    let email = req.body.email;
+        try {
+            let userData = await User.findOne({ email });//returns document related to email
+            if (!userData) {
+                return res.status(400).json({ errors: "Email not found"});
+            }
+
+            if (req.body.password !== userData.password) {
+                return res.status(400).json({ errors: "Incorrect Password"});
+            }
+
+            return res.json({ success:true });
+
         } catch (error) {
             console.error(error);
             res.status(500).json({ success: false, error: 'Internal Server Error' });

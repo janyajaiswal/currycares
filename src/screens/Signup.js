@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Link, json } from 'react-router-dom'
 import './style.css';
 
 export default function Signup() {
-
   //--------ANIMATION LOGIC-----------
   const [isSignUpMode, setIsSignUpMode] = useState(false);
 
@@ -14,13 +12,16 @@ export default function Signup() {
   const handleSignInClick = () => {
     setIsSignUpMode(false);
   };
-
-  const [credentials, setcredentials] = useState({ name: "", email: "", password: "", geolocation:""}) //useStateSnippet
   
-  //-----ON-SUBMIT SIGNUP FORM-------
+
+//-----------------------------ON-SUBMIT SIGNUP FORM------------------------------
+    
+  const [credentials, setcredentials] = useState({ name: "", email: "", password: "", geolocation: ""}) //useStateSnippet
+
   const handleSubmit = async(e) => {// 'e' here is parameter(any variable) where function is being clicked
     e.preventDefault();                   // **Synthetic event**
-    const response = await fetch("http://localhost:4000/api/createuser", {
+    console.log(JSON.stringify({name: credentials.name,email:credentials.email, password:credentials.password,location: credentials.geolocation}))
+    const response = await fetch("http://localhost:4000/api/createuser", {//the route in CreateUser.js is named createuser(smalls)
       method: 'POST',                     //post method needs a body 
       headers: {
         'Content-Type': 'application/json'  //copy paste from thunder client
@@ -42,6 +43,35 @@ export default function Signup() {
     setcredentials({...credentials,[event.target.name]:event.target.value})
   }
 
+//----------------------------SIGN - IN PART------------------------------------
+
+const [loginCredentials, setLoginCredentials] = useState({ email: "", password: ""}); //useStateSnippet
+  
+
+const handleLogin = async (clickEvent) => {// 'clickEvent' here is parameter(any variable) where function is being clicked
+  clickEvent.preventDefault();                   // **Synthetic event**
+  console.log(JSON.stringify({ email: loginCredentials.email, password: loginCredentials.password }))
+  const loginResponse = await fetch("http://localhost:4000/api/loginuser", {//the route in CreateUser.js is named loginuser(smalls)
+    method: 'POST',                     //post method needs a body 
+    headers: {
+      'Content-Type': 'application/json'  //copy paste from thunder client
+    },
+    body: JSON.stringify({ email: loginCredentials.email, password: loginCredentials.password })
+    //these parameters must be same as body of backend
+  });
+
+  const jsonResponse = await loginResponse.json()
+  console.log(jsonResponse);
+
+  if (!jsonResponse.success) {
+    alert("Enter Valid Credentials")
+  }
+}
+//Function to allow user to type and it registers as value, else they remain static as initialized " " empty
+const handleLoginChange = (inputEvent) => {
+  setLoginCredentials({...loginCredentials,[inputEvent.target.name]:inputEvent.target.value})
+}
+
 
   return (
     <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
@@ -49,18 +79,18 @@ export default function Signup() {
         <div className="signin-signup"> 
           
           {/* SIGN -IN */}
-          <form onSubmit={handleSubmit} className="sign-in-form">
+          <form onSubmit={handleLogin} className="sign-in-form">
             <h2 className="title">Sign In</h2>
             <div className="input-field">
-              <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <i className="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" value={loginCredentials.email}  onChange={handleLoginChange}/>
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" value={loginCredentials.password}  onChange={handleLoginChange}/>
             </div>
             {/*submit-button*/}
-            <input type="submit" value="Login" className="btn solid" />
+            <button type="submit" value="Login" className="btn" onClick={handleLogin}>Sign in</button>
 
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
