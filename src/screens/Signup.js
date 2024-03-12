@@ -34,7 +34,8 @@ export default function Signup() {
     console.log(json);
 
     if (!json.success) {
-      alert("Enter Valid Credentials")
+      const errorMessage = json.error || "An error occurred. Please try again.";
+      alert(errorMessage);
     }
     
   }
@@ -126,7 +127,7 @@ const handleLoginChange = (inputEvent) => {
               <input type="password" placeholder="Password" name='password' value={credentials.password} onChange={whenChange}/>
             </div>
             <div className="input-field">
-            <i class="fa-solid fa-address-book"></i>
+            <i className="fa-solid fa-address-book"></i>
               <input type="text" placeholder="Address" name='geolocation' value={credentials.geolocation} onChange={whenChange}/>
             </div>
             {/*submit-button*/}
