@@ -1,6 +1,9 @@
 import './App.css';
 import Home from './screens/Home';
 import SignUp from './screens/Signup';
+import About from './screens/About';
+import Orders from './screens/Orders';
+import Profile from './screens/Profile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -10,6 +13,9 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/SignUp' element={<SignUp />} />
+          <Route exact path='/About' element={<About />} />
+          <Route exact path='/Orders' element={<Orders />} />
+          <Route exact path='/Profile' element={<Profile/>} />
           </Routes>
         </div>
       </Router>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 
 export default function Signup() {
@@ -12,10 +13,9 @@ export default function Signup() {
   const handleSignInClick = () => {
     setIsSignUpMode(false);
   };
-  
 
 //-----------------------------ON-SUBMIT SIGNUP FORM------------------------------
-    
+  
   const [credentials, setcredentials] = useState({ name: "", email: "", password: "", geolocation: ""}) //useStateSnippet
 
   const handleSubmit = async(e) => {// 'e' here is parameter(any variable) where function is being clicked
@@ -44,11 +44,11 @@ export default function Signup() {
     setcredentials({...credentials,[event.target.name]:event.target.value})
   }
 
-//----------------------------SIGN - IN PART------------------------------------
-
+  //----------------------------SIGN - IN PART------------------------------------
+  
+const navigate = useNavigate();  
 const [loginCredentials, setLoginCredentials] = useState({ email: "", password: ""}); //useStateSnippet
   
-
 const handleLogin = async (clickEvent) => {// 'clickEvent' here is parameter(any variable) where function is being clicked
   clickEvent.preventDefault();                   // **Synthetic event**
   console.log(JSON.stringify({ email: loginCredentials.email, password: loginCredentials.password }))
@@ -67,6 +67,13 @@ const handleLogin = async (clickEvent) => {// 'clickEvent' here is parameter(any
   if (!jsonResponse.success) {
     alert("Enter Valid Credentials")
   }
+  
+  if (jsonResponse.success)
+  {
+    localStorage.setItem("authToken", jsonResponse.authToken);
+    console.log(localStorage.getItem("authToken"))
+    navigate("/");
+    }
 }
 //Function to allow user to type and it registers as value, else they remain static as initialized " " empty
 const handleLoginChange = (inputEvent) => {

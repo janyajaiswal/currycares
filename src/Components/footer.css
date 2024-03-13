@@ -1,18 +1,29 @@
 .footer {
   background-color: #e0b816;
-  padding: 20px 0;
+  padding: 40px 0;
   text-align: center;
-  width: 100%; /* Make footer span the whole page width */
+  width: 100%;
 }
 
 .footer-content {
-  max-width: 1200px; /* Increase max-width for larger screens */
-  margin: 0 auto; /* Center the content */
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 0 20px;
 }
 
 .footer h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem; /* Adjusted size */
   color: #333;
+}
+#hyperlink {
+  color: blueviolet;
 }
 
 .footer p {
@@ -20,18 +31,23 @@
   color: #000000;
 }
 
+.footer a {
+  color: #000000;
+  text-decoration: none;
+}
+
 .social-links {
   margin-top: 20px;
-  background-color: beige;
   width: auto;
-  display: flex; /* Use flexbox for better alignment */
-  justify-content: center; /* Center the social links horizontally */
+  display: flex;
+  flex-direction: column; /* Changed direction to column */
+  align-items: center; /* Center align the icons */
 }
 
 .social-links a {
-  display: inline-block;
-  margin: 0 10px;
-  font-size: 24px;
+  display: block; /* Changed to block to stack vertically */
+  margin: 10px 0; /* Adjusted margin */
+  font-size: 28px; /* Increased size */
 }
 
 #meta {
