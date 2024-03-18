@@ -15,12 +15,13 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json())
-app.use('/api', require("./Routes/CreateUser")) //connects to endpoint to get a response
+app.use('/api', require("./Routes/CreateUser")); //connects to endpoint to get a response
+app.use('/api', require("./Routes/DisplayData"));
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World!')
 });
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on port ${port}`)
 });
