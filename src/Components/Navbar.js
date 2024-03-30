@@ -1,9 +1,17 @@
 import React from 'react';
 import logo2 from '/Users/janyajaiswal/Desktop/SDP/currycares/src/images/logo2.png';
 import './Navbar.css';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
+
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    navigate()
+
+  }
+
   return (
     <div>
           <nav className="nav">
@@ -24,15 +32,31 @@ export default function Navbar() {
         <div className="navlinks">
             <ul className="ulist">
               <li className="item">
-                <Link className="pdln" to="/Orders">Orders</Link>
+              <Link className="pdln signup" to="/SignUp">SignUp</Link>
               </li>
-              <li className="item">
-                <Link className="pdln" to="/Profile">Profile</Link>
+              {(localStorage.getItem("authToken")) ?
+              <li>
+              <Link className="pdln" to="/Orders">Orders</Link>
               </li>
-              <li className="item">
-                <Link className="pdln" to="/SignUp">SignUp</Link>
-              </li>
+                
+            : ""}
             </ul>
+            {(!localStorage.getItem("authToken")) ?
+            <div className ='navlinks'>
+
+                <Link className="pdln" to="/Profile">Profile</Link>
+            
+              </div>
+              : 
+              <div>
+              <div className='navlinks'>
+                  My Cart
+                </div>
+                <div className='navlinks' onClick={handleLogout}>
+                  Logout
+                </div>
+              </div>
+            }
           </div>
         </div>
       </nav>

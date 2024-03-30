@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between; /* Ensure elements are spaced evenly */
   align-items: center;
-  position: fixed; /* Make navbar fixed to the top */
+  position: relative; /* Make navbar fixed to the top */
   top: 0; /* Stick navbar to the top */
   width: 100%; /* Make navbar full width */
   margin-top: auto;
@@ -62,7 +62,9 @@
 /*-------------------LINKS-----------------------*/
 .navlinks {
   text-align: right;
-  font-weight: lighter;
+  font-weight: 600;
+  display: flex; /* Add display flex to make children elements align horizontally */
+  align-items: center; /* Align children items vertically center */
 }
 
 .ulist {
@@ -80,6 +82,7 @@
   color: #000000; /* Color of the navbar links */
   text-decoration: none; /* Remove underline from the navbar links */
   font-size: 16px; /* Font size of the navbar links */
+  margin-left: 10px; /* Add spacing between navbar items */
 }
 
 .pdln:hover {
