@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
 const port = 4000;
-const toconnect = require("/Users/janyajaiswal/Desktop/SDP/currycares/backend/db.js");
+const toconnect = require("./db.js"); // Update the path to use a relative path
+const itemsRouter = require("./Routes/ItemsRouter");
+const cors = require('cors'); // Import the cors middleware
+
+app.use(cors({ origin: 'http://localhost:3000' })); // Allow requests from http://localhost:3000
 
 toconnect(); // Call the function to establish the database connection
 
@@ -15,12 +19,9 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json())
-app.use('/api', require("./Routes/CreateUser")); //connects to endpoint to get a response
+app.use('/api', require("./Routes/CreateUser"));
 app.use('/api', require("./Routes/DisplayData"));
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-});
-
+app.use('/api', itemsRouter); 
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

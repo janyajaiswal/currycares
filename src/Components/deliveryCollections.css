@@ -10,8 +10,9 @@
     align-items: center;
   }
 
-  .filters{
-    padding: 16px 0px;
-    display: flex;
-    flex-wrap: wrap;
-  }
+.collection-title{
+    font-size: 28px;
+    color: rgb(26, 4, 70);
+    margin-bottom: 32px;
+    font-weight: 600;
+}

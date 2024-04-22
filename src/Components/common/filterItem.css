@@ -1,0 +1,14 @@
+.filter-item{
+    padding: 8px;
+    display: flex;
+    background-color: rgb(200, 152, 209);
+    color: rgb(255, 255, 255);
+    border: 1px solid grey;
+    border-radius: 8px;
+    margin: 10px 10px 10px 0px;
+    font-size: 12px ;
+}
+
+.filter-name{
+    margin: 5px;
+}

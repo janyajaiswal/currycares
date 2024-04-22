@@ -22,7 +22,7 @@ export default function Body() {
         <div className="block">
           <img src={curry} alt="Image 3"/>
         </div>
-      </div>
+  </div>
     </div>
   );
 }
