@@ -2,7 +2,7 @@ import React from 'react';
 import "./delivery.css";
 import Filters from'./common/filters.js';
 import DeliveryCollections from './deliveryCollections.js';
-
+import ExploreSection from './ExploreSection.js';
 const deliveryFilters = [
     {
         id: 1,
@@ -41,7 +41,8 @@ const Delivery = () => {
             <div className='max-width'>
                 <Filters filterList={ deliveryFilters} />
             </div>
-            <DeliveryCollections/>
+            <DeliveryCollections />
+            <ExploreSection list= {restaurantList} collectionName= 'Delivery Restaurants in Bengaluru'/>
         </div>
     )
 };

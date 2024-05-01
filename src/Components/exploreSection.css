@@ -1,0 +1,18 @@
+/* Common styles */
+.max-width {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .absolute-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .collection-title{
+    font-size: 28px;
+    color: rgb(26, 4, 70);
+    margin-bottom: 32px;
+    font-weight: 600;
+}
