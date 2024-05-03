@@ -5,6 +5,7 @@ import NextArrow from './common/carousel/nextArrow';
 import PrevArrow from './common/carousel/prevArrow';
 import DeliveryItem from './deliveryItem';
 
+
 const DeliveryCollections = () => {
     const [deliveryItems, setDeliveryItems] = useState([]);
 

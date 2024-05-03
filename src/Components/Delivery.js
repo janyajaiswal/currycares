@@ -3,6 +3,7 @@ import "./delivery.css";
 import Filters from'./common/filters.js';
 import DeliveryCollections from './deliveryCollections.js';
 import ExploreSection from './ExploreSection.js';
+import { restaurants } from '../data/restaurants.js';
 const deliveryFilters = [
     {
         id: 1,
@@ -35,6 +36,7 @@ const deliveryFilters = [
         title: 'Daily offers',
     }
 ]
+const restaurantList = restaurants;
 const Delivery = () => {
     return (
         <div>
