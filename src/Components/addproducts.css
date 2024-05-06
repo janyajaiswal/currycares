@@ -1,0 +1,32 @@
+/* Common styles */
+.max-width {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+.absolute-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add-button-section {
+    margin-top: 10px; /* Adjust as needed */
+    margin-bottom: 10px;
+  }
+  
+  .add-button {
+    padding: 10px 20px; /* Increase padding for better visibility */
+    font-size: 16px; /* Increase font size for better readability */
+    font-weight: 600;
+    color: yellow; /* Set color of the plus sign to yellow */
+    background-color: purple; /* Set background color to purple */
+    border: none; /* Remove border for a cleaner look */
+    border-radius: 20px; /* Make the button rounded */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition for smoother hover effect */
+  }
+  
+  .add-button:hover {
+    background-color: rgb(120, 40, 200); /* Darken the background color on hover */
+  }

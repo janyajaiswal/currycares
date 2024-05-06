@@ -84,9 +84,9 @@ const getCorrectScreen = (tab) => {
   switch (tab) {
     case "Delivery":
       return <Delivery />;
-    case "Pick up":
+    case "Pickup":
       return <Pickup />;
-    case "Contribute to Cause":
+    case "Contribute":
       return <Contribute />;
     default:
       return <div>Delivery</div>;

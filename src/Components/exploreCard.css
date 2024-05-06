@@ -95,3 +95,37 @@
     border: 1px solid rgb(255, 255, 255);
 
 }
+
+.card-description {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.expanded {
+    height: 500px; /* Adjust the height as needed */
+  }
+  
+  .explore-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .explore-grid.expanded {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  
+  .explore-card {
+    height: 340px; /* Adjust the height as needed */
+    margin: 12px 0px 24px 0px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid transparent; /* so we can change color later on hover */
+    transition: height 0.5s ease; /* Add transition for smooth height change */
+  }
+  
+  .explore-card.expanded {
+    height: 500px; /* Adjust the height as needed */
+  }
+  

@@ -1,4 +1,3 @@
-// Import all restaurant images
 import the_fatty_bao from "../images/the_fatty_bao.jpeg";
 import truffles from "../images/truffles.jpeg";
 import karavalli from "../images/karavalli.jpeg";
@@ -24,15 +23,10 @@ export const restaurants = [
     "reviews_count": 1200,
     "image": the_fatty_bao,
     "sb_avg_cost": "₹249 for one",
-    "address": {
-      "street": "12th Main, Indiranagar",
-      "city": "Bangalore",
-      "zipcode": "560008",
-      "location_coordinates": {
-        "latitude": 12.9716,
-        "longitude": 77.5946
-      }
-    }
+    "description": "Modern Asian restaurant offering a variety of Japanese and Chinese dishes.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Truffles",
@@ -42,15 +36,10 @@ export const restaurants = [
     "reviews_count": 1800,
     "image": truffles,
     "sb_avg_cost": "₹149 for one",
-    "address": {
-      "street": "80 Feet Road, Koramangala",
-      "city": "Bangalore",
-      "zipcode": "560034",
-      "location_coordinates": {
-        "latitude": 12.9358,
-        "longitude": 77.6148
-      }
-    }
+    "description": "Casual eatery known for its delicious burgers and American fast food.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Karavalli",
@@ -60,15 +49,10 @@ export const restaurants = [
     "reviews_count": 900,
     "image": karavalli,
     "sb_avg_cost": "₹399 for one",
-    "address": {
-      "street": "The Gateway Hotel, Residency Road",
-      "city": "Bangalore",
-      "zipcode": "560025",
-      "location_coordinates": {
-        "latitude": 12.9674,
-        "longitude": 77.5958
-      }
-    }
+    "description": "Fine dining restaurant offering traditional South Indian and seafood dishes.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Vidyarthi Bhavan",
@@ -78,15 +62,10 @@ export const restaurants = [
     "reviews_count": 2500,
     "image": vidyarthi_bhavan,
     "sb_avg_cost": "₹199 for one",
-    "address": {
-      "street": "Gandhi Bazaar, Basavanagudi",
-      "city": "Bangalore",
-      "zipcode": "560004",
-      "location_coordinates": {
-        "latitude": 12.9423,
-        "longitude": 77.5732
-      }
-    }
+    "description": "Iconic eatery known for its delicious South Indian breakfast dishes.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Toit",
@@ -96,15 +75,10 @@ export const restaurants = [
     "reviews_count": 1500,
     "image": toit,
     "sb_avg_cost": "₹299 for one",
-    "address": {
-      "street": "100 Feet Road, Indiranagar",
-      "city": "Bangalore",
-      "zipcode": "560008",
-      "location_coordinates": {
-        "latitude": 12.9740,
-        "longitude": 77.6386
-      }
-    }
+    "description": "Popular brewery known for its European and Continental dishes.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Cafe Thulp",
@@ -114,15 +88,10 @@ export const restaurants = [
     "reviews_count": 1200,
     "image": cafe_thulp,
     "sb_avg_cost": "₹449 for one",
-    "address": {
-      "street": "Koramangala 5th Block",
-      "city": "Bangalore",
-      "zipcode": "560095",
-      "location_coordinates": {
-        "latitude": 12.9350,
-        "longitude": 77.6245
-      }
-    }
+    "description": "Casual dining spot offering a variety of burgers and American fast food.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Koshy's",
@@ -132,15 +101,10 @@ export const restaurants = [
     "reviews_count": 1100,
     "image": koshys,
     "sb_avg_cost": "₹129 for one",
-    "address": {
-      "street": "39, St. Marks Road",
-      "city": "Bangalore",
-      "zipcode": "560001",
-      "location_coordinates": {
-        "latitude": 12.9754,
-        "longitude": 77.6047
-      }
-    }
+    "description": "Heritage restaurant serving a mix of Continental, Indian, and South Indian cuisine.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Sri Sairam's Chaat and Juice",
@@ -150,15 +114,10 @@ export const restaurants = [
     "reviews_count": 800,
     "image": sri_sairams,
     "sb_avg_cost": "₹349 for one",
-    "address": {
-      "street": "4th T Block, Jayanagar",
-      "city": "Bangalore",
-      "zipcode": "560041",
-      "location_coordinates": {
-        "latitude": 12.9306,
-        "longitude": 77.5833
-      }
-    }
+    "description": "Local favorite for delicious street food and refreshing juices.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Mavalli Tiffin Room (MTR)",
@@ -168,15 +127,10 @@ export const restaurants = [
     "reviews_count": 1700,
     "image": mtr,
     "sb_avg_cost": "₹179 for one",
-    "address": {
-      "street": "14, Lalbagh Road",
-      "city": "Bangalore",
-      "zipcode": "560027",
-      "location_coordinates": {
-        "latitude": 12.9508,
-        "longitude": 77.5846
-      }
-    }
+    "description": "Iconic South Indian restaurant serving delicious breakfast and snacks.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Corner House Ice Cream",
@@ -186,15 +140,10 @@ export const restaurants = [
     "reviews_count": 2000,
     "image": corner_house,
     "sb_avg_cost": "₹549 for one",
-    "address": {
-      "street": "100 Feet Road, Indiranagar",
-      "city": "Bangalore",
-      "zipcode": "560038",
-      "location_coordinates": {
-        "latitude": 12.9741,
-        "longitude": 77.6395
-      }
-    }
+    "description": "Famous ice cream parlor offering a variety of desserts and ice cream flavors.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Cafe Coffee Day",
@@ -204,15 +153,10 @@ export const restaurants = [
     "reviews_count": 1400,
     "image": cafe_coffee_day,
     "sb_avg_cost": "₹449 for one",
-    "address": {
-      "street": "MG Road",
-      "city": "Bangalore",
-      "zipcode": "560001",
-      "location_coordinates": {
-        "latitude": 12.9750,
-        "longitude": 77.6018
-      }
-    }
+    "description": "Coffee shop chain known for its variety of hot and cold beverages.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Barbeque Nation",
@@ -222,15 +166,10 @@ export const restaurants = [
     "reviews_count": 1900,
     "image": barbeque_nation,
     "sb_avg_cost": "₹199 for one",
-    "address": {
-      "street": "100 Feet Road, Indiranagar",
-      "city": "Bangalore",
-      "zipcode": "560038",
-      "location_coordinates": {
-        "latitude": 12.9767,
-        "longitude": 77.6408
-      }
-    }
+    "description": "Buffet restaurant known for its delicious North Indian and barbecue dishes.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Airlines Hotel",
@@ -240,15 +179,10 @@ export const restaurants = [
     "reviews_count": 1500,
     "image": airlines_hotel,
     "sb_avg_cost": "₹299 for one",
-    "address": {
-      "street": "4, Madras Bank Road, Lavelle Road",
-      "city": "Bangalore",
-      "zipcode": "560001",
-      "location_coordinates": {
-        "latitude": 12.9715,
-        "longitude": 77.5956
-      }
-    }
+    "description": "Classic South Indian restaurant known for its delicious breakfast dishes.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "The Black Pearl",
@@ -258,15 +192,10 @@ export const restaurants = [
     "reviews_count": 1000,
     "image": the_black_pearl,
     "sb_avg_cost": "₹549 for one",
-    "address": {
-      "street": "Koramangala 5th Block",
-      "city": "Bangalore",
-      "zipcode": "560095",
-      "location_coordinates": {
-        "latitude": 12.9345,
-        "longitude": 77.6228
-      }
-    }
+    "description": "Multi-cuisine restaurant offering North Indian, Chinese, and Continental dishes.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   },
   {
     "name": "Maiyas",
@@ -276,14 +205,9 @@ export const restaurants = [
     "reviews_count": 800,
     "image": maiyas,
     "sb_avg_cost": "₹349 for one",
-    "address": {
-      "street": "JP Nagar, Jayamahal",
-      "city": "Bangalore",
-      "zipcode": "560006",
-      "location_coordinates": {
-        "latitude": 12.9979,
-        "longitude": 77.5885
-      }
-    }
+    "description": "Popular eatery offering a variety of South Indian, North Indian, and sweet dishes.",
+    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
+    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
   }
 ];
