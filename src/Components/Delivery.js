@@ -3,7 +3,8 @@ import "./delivery.css";
 import Filters from'./common/filters.js';
 import DeliveryCollections from './deliveryCollections.js';
 import ExploreSection from './ExploreSection.js';
-import { restaurants } from '../data/restaurants.js';
+import restaurants from '../data/restaurants.js';
+
 const deliveryFilters = [
     {
         id: 1,
@@ -36,15 +37,15 @@ const deliveryFilters = [
         title: 'Daily offers',
     }
 ]
-const restaurantList = restaurants;
+
 const Delivery = () => {
     return (
         <div>
             <div className='max-width'>
-                <Filters filterList={ deliveryFilters} />
+                <Filters filterList={deliveryFilters} />
             </div>
             <DeliveryCollections />
-            <ExploreSection list= {restaurantList} collectionName= 'Delivery Restaurants in Bengaluru'/>
+            <ExploreSection list={restaurants} collectionName='Delivery Restaurants in Bengaluru' />
         </div>
     )
 };

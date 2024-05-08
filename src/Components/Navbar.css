@@ -51,20 +51,20 @@
   text-align: right;
   font-weight: 600;
   display: flex;
+  flex-grow: 1; /* Allow the navbar links to grow and take up remaining space */
+  justify-content: flex-end; /* Align items to the right */
 }
 
 .ulist {
   list-style-type: none;
   display: flex;
-  margin-left: 780%;
+  gap: 20px; /* Add some space between the list items */
 }
-
 
 .pdln {
   color: #000000;
   text-decoration: none;
   font-size: 16px;
-  margin-left: 10px;
 }
 
 .pdln:hover {
@@ -80,8 +80,8 @@
   border: 1px solid ;
   width: 600px;
   box-shadow: 0 2px 4px rgba(152, 31, 179, 0.6); /* Added box-shadow */
+  margin-right: auto; /* Move the container to the left by setting margin-right to auto */
 }
-
 .location-wrapper {
   display: flex;
   flex: 1;
@@ -134,37 +134,41 @@
 }
 
 .profile-wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 15%;
-  align-items: center;
+  position: relative; /* Make the wrapper a positioned container */
+  display: flex; /* Make the wrapper a flex container */
+  align-items: center; /* Align items vertically */
 }
 
-/* Removed redundant or unused classes */
-.header-right {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  align-items: center;
-  height: 12px; /* Removed height property */
-}
-
-.profile-options-icon {
-  /* Adjusted alignment */
-  margin-left: 8px;
-}
-
-.header-profile-image{
-  height:40px;
+/* Adjusted styles for profile image and username */
+.header-profile-image {
+  height: 40px;
   width: 40px;
   border-radius: 50%;
+  margin-right: 8px; /* Add margin to separate from the username */
 }
 
-.header-username{
+.header-username {
   font-size: 20px;
   font-weight: 400;
 }
 
-.profile-options-icon{
-  font-size: 18px;
+/* Add this CSS for dropdown menu */
+.dropdown-menu {
+  position: absolute; /* Position the dropdown menu */
+  top: calc(100% + 5px); /* Position the dropdown below the profile wrapper */
+  left: 100; /* Align the dropdown with the left edge of the profile wrapper */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(152, 31, 179, 0.6);
+  z-index: 1001;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.dropdown-menu li {
+  padding: 10px; /* Adjust padding for dropdown items */
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
 }

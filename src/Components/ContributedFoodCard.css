@@ -1,0 +1,30 @@
+.contributed-food-card {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+  
+  .food-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .food-details {
+    margin-top: 10px;
+  }
+  
+  .description {
+    font-weight: bold;
+  }
+  
+  .best-before-date,
+  .quantity,
+  .price {
+    margin-top: 5px;
+  }
+  

@@ -128,4 +128,33 @@
   .explore-card.expanded {
     height: 500px; /* Adjust the height as needed */
   }
+
+  .button-container {
+    display: flex;
+    gap: 10px; /* Adjust spacing between buttons as needed */
+  }  
+  
+  .green-dot, .red-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .green-dot {
+    background-color: green;
+  }
+  
+  .red-dot {
+    background-color: red;
+  }
+  
+  .dots-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dot {
+    margin-right: 5px;
+  }
   

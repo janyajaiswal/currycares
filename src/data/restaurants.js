@@ -14,7 +14,7 @@ import airlines_hotel from "../images/airlines_hotel.jpeg";
 import the_black_pearl from "../images/the_black_pearl.jpeg";
 import maiyas from "../images/maiyas.jpeg";
 
-export const restaurants = [
+const restaurants = [
   {
     "name": "The Fatty Bao",
     "location": "Indiranagar",
@@ -24,9 +24,12 @@ export const restaurants = [
     "image": the_fatty_bao,
     "sb_avg_cost": "₹249 for one",
     "description": "Modern Asian restaurant offering a variety of Japanese and Chinese dishes.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Truffles",
@@ -37,9 +40,12 @@ export const restaurants = [
     "image": truffles,
     "sb_avg_cost": "₹149 for one",
     "description": "Casual eatery known for its delicious burgers and American fast food.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Karavalli",
@@ -50,9 +56,12 @@ export const restaurants = [
     "image": karavalli,
     "sb_avg_cost": "₹399 for one",
     "description": "Fine dining restaurant offering traditional South Indian and seafood dishes.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Vidyarthi Bhavan",
@@ -63,9 +72,12 @@ export const restaurants = [
     "image": vidyarthi_bhavan,
     "sb_avg_cost": "₹199 for one",
     "description": "Iconic eatery known for its delicious South Indian breakfast dishes.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Toit",
@@ -76,9 +88,12 @@ export const restaurants = [
     "image": toit,
     "sb_avg_cost": "₹299 for one",
     "description": "Popular brewery known for its European and Continental dishes.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Cafe Thulp",
@@ -89,9 +104,12 @@ export const restaurants = [
     "image": cafe_thulp,
     "sb_avg_cost": "₹449 for one",
     "description": "Casual dining spot offering a variety of burgers and American fast food.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Koshy's",
@@ -102,9 +120,12 @@ export const restaurants = [
     "image": koshys,
     "sb_avg_cost": "₹129 for one",
     "description": "Heritage restaurant serving a mix of Continental, Indian, and South Indian cuisine.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Sri Sairam's Chaat and Juice",
@@ -115,9 +136,12 @@ export const restaurants = [
     "image": sri_sairams,
     "sb_avg_cost": "₹349 for one",
     "description": "Local favorite for delicious street food and refreshing juices.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Mavalli Tiffin Room (MTR)",
@@ -128,9 +152,12 @@ export const restaurants = [
     "image": mtr,
     "sb_avg_cost": "₹179 for one",
     "description": "Iconic South Indian restaurant serving delicious breakfast and snacks.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Corner House Ice Cream",
@@ -141,9 +168,12 @@ export const restaurants = [
     "image": corner_house,
     "sb_avg_cost": "₹549 for one",
     "description": "Famous ice cream parlor offering a variety of desserts and ice cream flavors.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Cafe Coffee Day",
@@ -154,9 +184,12 @@ export const restaurants = [
     "image": cafe_coffee_day,
     "sb_avg_cost": "₹449 for one",
     "description": "Coffee shop chain known for its variety of hot and cold beverages.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Barbeque Nation",
@@ -167,9 +200,12 @@ export const restaurants = [
     "image": barbeque_nation,
     "sb_avg_cost": "₹199 for one",
     "description": "Buffet restaurant known for its delicious North Indian and barbecue dishes.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Airlines Hotel",
@@ -180,9 +216,12 @@ export const restaurants = [
     "image": airlines_hotel,
     "sb_avg_cost": "₹299 for one",
     "description": "Classic South Indian restaurant known for its delicious breakfast dishes.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "The Black Pearl",
@@ -193,9 +232,12 @@ export const restaurants = [
     "image": the_black_pearl,
     "sb_avg_cost": "₹549 for one",
     "description": "Multi-cuisine restaurant offering North Indian, Chinese, and Continental dishes.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   },
   {
     "name": "Maiyas",
@@ -206,8 +248,13 @@ export const restaurants = [
     "image": maiyas,
     "sb_avg_cost": "₹349 for one",
     "description": "Popular eatery offering a variety of South Indian, North Indian, and sweet dishes.",
-    "breakfast": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "lunch": Math.floor(Math.random() * 5), // Random value between 0 and 4
-    "dinner": Math.floor(Math.random() * 5) // Random value between 0 and 4
+    "breakfast_veg": Math.floor(Math.random() * 5),
+    "lunch_veg": Math.floor(Math.random() * 5),
+    "dinner_veg": Math.floor(Math.random() * 5),
+    "breakfast_nonveg": Math.floor(Math.random() * 5),
+    "lunch_nonveg": Math.floor(Math.random() * 5),
+    "dinner_nonveg": Math.floor(Math.random() * 5)
   }
 ];
+
+export default restaurants;

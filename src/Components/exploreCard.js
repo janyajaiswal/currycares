@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import { AddProduct } from './AddProducts';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../stores/cart/cartSlice';
+import { AddProduct } from './AddProducts'; // For veg items
+import { AddProduct_nv } from './AddProducts_nv'; // For non-veg items
 import "./exploreCard.css";
 
-const ExploreCard = ({ restaurant, onAddProduct }) => {
+const ExploreCard = ({ restaurant }) => {
+  const dispatch = useDispatch();
+
+  const addProductToCart = (type) => {
+    // Dispatch addToCart action with the restaurant object and product type
+    dispatch(addToCart({ ...restaurant, type }));
+  };
 
   const [expanded, setExpanded] = useState(false);
   const toggleExpanded = () => {
       setExpanded(!expanded);
   };
-    
-    const addProduct = () => {
-      //Code to be added after setting up redux state for cart to add product there
-    
-    }
 
   const name = restaurant?.name ?? "";
   const coverImg = restaurant?.image;
@@ -20,9 +24,12 @@ const ExploreCard = ({ restaurant, onAddProduct }) => {
   const approxPrice = restaurant?.sb_avg_cost;
   const cuisines = restaurant?.cuisine?.map((item) => item);
   const description = restaurant?.description;
-  const breakfast = restaurant?.breakfast;
-  const lunch = restaurant?.lunch;
-  const dinner = restaurant?.dinner;
+  const breakfast_veg = restaurant?.breakfast_veg;
+  const lunch_veg = restaurant?.lunch_veg;
+  const dinner_veg = restaurant?.dinner_veg;
+  const breakfast_nonveg = restaurant?.breakfast_nonveg;
+  const lunch_nonveg = restaurant?.lunch_nonveg;
+  const dinner_nonveg = restaurant?.dinner_nonveg;
 
   // Get current local time
   const currentHour = new Date().getHours();
@@ -30,11 +37,11 @@ const ExploreCard = ({ restaurant, onAddProduct }) => {
   // Determine which meal to display based on the current time
   let meal;
   if (currentHour >= 6 && currentHour < 12) {
-    meal = `Breakfast: ${breakfast}`;
+    meal = expanded ? `Breakfast: ${breakfast_veg !== 0 ? `${breakfast_veg} 🟢` : ''} ${breakfast_nonveg !== 0 ? `${breakfast_nonveg} 🔴` : ''}` : `Breakfast (Veg/Non-Veg)`;
   } else if (currentHour >= 12 && currentHour < 18) {
-    meal = `Lunch: ${lunch}`;
+    meal = expanded ? `Lunch: ${lunch_veg !== 0 ? `${lunch_veg} 🟢` : ''} ${lunch_nonveg !== 0 ? `${lunch_nonveg} 🔴` : ''}` : `Lunch (Veg/Non-Veg)`;
   } else if (currentHour >= 18 && currentHour < 24) {
-    meal = `Dinner: ${dinner}`;
+    meal = expanded ? `Dinner: ${dinner_veg !== 0 ? `${dinner_veg} 🟢` : ''} ${dinner_nonveg !== 0 ? `${dinner_nonveg} 🔴` : ''}` : `Dinner (Veg/Non-Veg)`;
   }
 
   return (
@@ -69,9 +76,11 @@ const ExploreCard = ({ restaurant, onAddProduct }) => {
         {expanded && description && (
           <div className="description">
             <p>Description: {description}</p>
-            <AddProduct onAddProduct={addProduct}/>          
+            <div className="button-container">
+              <AddProduct onAddProduct={() => addProductToCart('veg')} />
+              <AddProduct_nv onAddProduct={() => addProductToCart('non-veg')} />
+            </div>
           </div>
-                  
         )}
         {approxPrice && <div className='res-price'>{approxPrice}</div>}
       </div>

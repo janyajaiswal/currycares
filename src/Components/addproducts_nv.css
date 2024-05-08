@@ -15,18 +15,18 @@
     margin-bottom: 10px;
   }
   
-  .add-button {
+  .add-button_nv {
     padding: 10px 20px; /* Increase padding for better visibility */
     font-size: 16px; /* Increase font size for better readability */
     font-weight: 600;
     color: yellow; /* Set color of the plus sign to yellow */
-    background-color: rgb(24, 167, 11); /* Set background color to purple */
+    background-color: rgb(192, 15, 15); /* Set background color to purple */
     border: none; /* Remove border for a cleaner look */
     border-radius: 20px; /* Make the button rounded */
     cursor: pointer;
     transition: background-color 0.3s ease; /* Add transition for smoother hover effect */
   }
   
-  .add-button:hover {
-    background-color: rgb(57, 240, 69); /* Darken the background color on hover */
+  .add-button_nv:hover {
+    background-color: rgb(233, 63, 37); /* Darken the background color on hover */
   }
