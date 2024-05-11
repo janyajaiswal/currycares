@@ -11,18 +11,6 @@ export default function Body() {
       <div className='banner-container'>
         <img src={banner} alt="Curry Cares Banner"/>
       </div>
-
-      <div className="container-body">
-        <div className="block">
-          <img src={biryani} alt="Image 1"/>
-        </div>
-        <div className="block">
-          <img src={pizza} alt="Image 2"/>
-        </div>
-        <div className="block">
-          <img src={curry} alt="Image 3"/>
-        </div>
-  </div>
     </div>
   );
 }

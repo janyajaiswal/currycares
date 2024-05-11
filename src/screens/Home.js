@@ -33,11 +33,7 @@ const Home = () => {
       console.error("Error fetching data:", error);
     }
   };
-
-  useEffect(() => { 
-    loadData(); 
-  }, []);
-
+  
   console.log("foodCat:", foodCat); // Log the value of foodCat
   console.log("foodItem:", foodItem); // Log the value of foodItem
 
@@ -47,34 +43,6 @@ const Home = () => {
       <TabOptions activeTab={activeTab} setActiveTab={setActiveTab} /> 
       {getCorrectScreen(activeTab)}
       <Body />
-      <div className='homecontainer'>
-        {foodCat.length > 0 ? (
-          foodCat.map((cat) => {
-            return (
-              <div className='row mb-3' key={cat._id}>
-                <div className='cards'>
-                  {cat.CategoryName}
-                  <hr />
-                  {foodItem.length > 0 ?
-                    foodItem.filter((item) => item.CategoryName === cat.CategoryName)
-                      .map((item) => {
-                        return (
-                          <div key={item._id} className='col-12 col-md-6 col-lg-3'>
-                            {/* Render card here */}
-                          </div>
-                        );
-                      })
-                    :
-                    <div>No items found</div>
-                  }
-                </div>
-              </div>
-            );
-          })
-        ) : (
-          <div>No food categories found</div>
-        )}
-      </div>
       <Footer />
     </div>
   );

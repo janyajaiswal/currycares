@@ -1,44 +1,108 @@
+/* Contribute container styles */
 .contribute-container {
-    max-width: 500px;
+    max-width: 800px;
     margin: 0 auto;
+    padding: 20px;
   }
   
-  .form-group {
+  /* Contribution form styles */
+  .contribute-form {
     margin-bottom: 20px;
   }
   
-  label {
+  /* Form group styles */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Label styles */
+  .form-group label {
     display: block;
+    margin-bottom: 5px;
     font-weight: bold;
   }
   
-  input[type='file'],
-  input[type='text'],
-  textarea,
-  input[type='date'],
-  input[type='number'] {
+  /* Input styles */
+  .form-group input,
+  .form-group textarea {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
-    margin-top: 5px;
+    font-size: 16px;
   }
   
-  button {
+  /* Button styles */
+  button[type="submit"] {
+    padding: 10px 20px;
     background-color: #4caf50;
-    color: white;
-    padding: 14px 20px;
-    margin-top: 10px;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
     font-size: 16px;
   }
   
-  button:hover {
+  button[type="submit"]:hover {
     background-color: #45a049;
+  }
+  
+  /* Contributions list styles */
+  .contributions-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Contributed food card styles */
+  .contributed-food-card {
+    flex: 0 1 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .contributed-food-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Food image styles */
+  .food-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Food details styles */
+  .food-details {
+    margin-top: 10px;
+  }
+  
+  /* Description styles */
+  .description {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Best before date styles */
+  .best-before-date {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  /* Quantity styles */
+  .quantity {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  /* Price styles */
+  .price {
+    font-size: 14px;
+    color: #555;
   }
   

@@ -17,7 +17,7 @@ function App() {
           <Route exact path='/About' element={<About />} />
           <Route exact path='/Orders' element={<Orders />} />
           <Route exact path='/Profile' element={<Profile />} />
-          <Route exact path='/Cart' element={<Cart />} /> {/* Add this line for Cart component */}
+          <Route exact path='/Cart' element={<Cart />} /> 
         </Routes>
       </div>
     </Router>

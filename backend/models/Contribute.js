@@ -2,27 +2,25 @@ const mongoose = require('mongoose');
 
 const contributeSchema = new mongoose.Schema({
   picture: {
-    type: String,
-    required: true
+    type: String, // Store the GridFS filename here
+    required: false, // Allow contributions without images
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   bestBeforeDate: {
     type: Date,
-    required: true
+    required: true,
   },
   quantity: {
     type: Number,
-    required: true
+    required: true,
   },
   price: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
 });
 
-const Contribute = mongoose.model('Contribute', contributeSchema);
-
-module.exports = Contribute;
+module.exports = mongoose.model('Contribute', contributeSchema);

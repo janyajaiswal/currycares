@@ -13,7 +13,7 @@ const deliveryFilters = [
     },
     {
         id: 2,
-        icon: <i class="fa-solid fa-ranking-star"></i>,
+        icon: <i className="fa-solid fa-ranking-star"></i>,
         title: 'Ratings 4+',
     },
     {
@@ -33,7 +33,7 @@ const deliveryFilters = [
     },
     {
         id: 6,
-        icon: <i class="fa-solid fa-hand-holding-dollar"></i>,
+        icon: <i className="fa-solid fa-hand-holding-dollar"></i>,
         title: 'Daily offers',
     }
 ]
