@@ -1,27 +1,39 @@
+// Import required modules
 const mongoose = require('mongoose');
 const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
+const { GridFsStorage } = require('multer-gridfs-storage');
 
-const mongoURI = 'mongodb+srv://jaiswaljanya:SDP123@currycares.rsaraqd.mongodb.net/CurryCares?retryWrites=true&w=majority&appName=CurryCares'; // Replace with your actual connection string
+// MongoDB connection URI
+const mongoURI = 'mongodb+srv://jaiswaljanya:SDP123@currycares.rsaraqd.mongodb.net/CurryCares?retryWrites=true&w=majority&appName=CurryCares';
 
-const conn = mongoose.createConnection(mongoURI, {});
+// Create a connection
+const conn = mongoose.createConnection(mongoURI);
 
-const storage = GridFsStorage({
-  uri: mongoURI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      const filename = `${Date.now()}-${file.originalname}`;
-      const fileInfo = {
-        filename: filename,
-        bucketName: 'Contribute', // Use your collection name (Contribute)
-      };
-      resolve(fileInfo);
-    });
-  },
+// Listen for connection events
+conn.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
 });
+conn.once('open', () => {
+  console.log('Connected to MongoDB');
 
-const upload = multer({ storage });
+  // Now that the connection is open, set up GridFSStorage and multer
+  const storage = new GridFsStorage({
+    url: mongoURI,
+    file: (req, file) => {
+      return new Promise((resolve, reject) => {
+        const filename = `${Date.now()}-${file.originalname}`;
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'Contribute', // Use your collection name (Contribute)
+        };
+        resolve(fileInfo);
+      });
+    },
+  });
 
-const gfs = conn.gfs; // Use the GridFS instance from the connection
+  // Create multer instance
+  const upload = multer({ storage });
 
-module.exports = { storage, upload, gfs }; // Export storage, upload, and gfs objects
+  // Export storage and upload objects
+  module.exports = { storage, upload };
+});

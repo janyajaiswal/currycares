@@ -57,9 +57,15 @@ const Contribute = () => {
 
       const response = await fetch('http://localhost:4000/api/contribute', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+      },
         body: formData, // Use FormData for multipart/form-data request
       });
-
+      // Check for successful response (200 OK)
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
       const data = await response.json();
       console.log(data);
 
@@ -90,10 +96,11 @@ const Contribute = () => {
   return (
     <div className="contribute-container">
       <h2>Contribute Food</h2>
-      <form onSubmit={handleSubmit} method='POST' enctype='multipart/form-data'>
+      <form onSubmit={handleSubmit} method='POST' encType='multipart/form-data'>
         <div className="form-group">
           <label htmlFor="picture">Picture:</label>
-          <input type="file" id="picture" name="picture" onChange={handleChange} accept="image/*" />
+          <input type="file" id="picture" name="picture" onChange={handleChange} accept="" />
+          <p>Supported image formats: JPEG, PNG, GIF</p>
         </div>
         <div className="form-group">
           <label htmlFor="description">Description:</label>

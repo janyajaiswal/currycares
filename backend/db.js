@@ -5,6 +5,10 @@ const connectToDB = async () => {
   try {
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB');
+    
+    // Get the MongoDB server version from the connection object
+    const { version } = await mongoose.connection.db.admin().serverInfo();
+    console.log('MongoDB version:', version);
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
   }

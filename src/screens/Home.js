@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Components/Navbar';
 import Body from '../Components/Body';
 import Footer from '../Components/Footer';
@@ -12,30 +12,31 @@ const Home = () => {
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
 
-  const loadData = async () => {
-    try {
-      const response = await fetch("http://localhost:4000/api/foodData", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/api/foodData", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
 
-      const data = await response.json();
-      console.log("Data:", data); // Log the data received from the server
-      if (Array.isArray(data) && data.length >= 2) {
-        setFoodItem(data[0]);
-        setFoodCat(data[1]);
-      } else {
-        console.error("Invalid data format received from server");
+        const data = await response.json();
+        console.log("Data:", data); // Log the data received from the server
+        if (Array.isArray(data) && data.length >= 2) {
+          setFoodItem(data[0]);
+          setFoodCat(data[1]);
+        } else {
+          console.error("Invalid data format received from server");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-  
-  console.log("foodCat:", foodCat); // Log the value of foodCat
-  console.log("foodItem:", foodItem); // Log the value of foodItem
+    };
+
+    loadData();
+  }, []); // Empty dependency array to ensure useEffect runs only once
 
   return (
     <div>
