@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const contributeSchema = new mongoose.Schema({
   picture: {
     type: String, // Store the GridFS filename here
-    required: false, // Allow contributions without images
+    required: true, // Allow contributions without images
   },
   description: {
     type: String,
@@ -23,4 +23,4 @@ const contributeSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Contribute', contributeSchema);
+module.exports = mongoose.model('Contribute', contributeSchema, 'Contribute');

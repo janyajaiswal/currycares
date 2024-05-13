@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './contribute.css';
+// import ReactImageCompression from 'react-image-compression';
 import ContributedFoodCard from './ContributedFoodCard'; // Import the ContributedFoodCard component
 
 const Contribute = () => {
-  const navigate = useNavigate(); // Use useNavigate from react-router-dom
-  const [foodData, setFoodData] = useState({
+const navigate = useNavigate(); // Use useNavigate from react-router-dom
+const [foodData, setFoodData] = useState({
     picture: '',
     description: '',
     bestBeforeDate: '',
@@ -22,6 +23,17 @@ const Contribute = () => {
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const compressImage = async (imageFile) => {
+    const options = {
+      maxSizeMB: 1, // Adjust max size as needed (in MB)
+      maxWidthOrHeight: 800, // Optional: Max width or height
+    };
+  
+    // const compressor = new ReactImageCompression(imageFile, options);
+    // const compressedImage = await compressor.getBlob();
+    // return compressedImage;
   };
 
   const handleSubmit = async (e) => {
@@ -41,25 +53,22 @@ const Contribute = () => {
       if (e.target.elements.picture.files.length > 0) {
         const imageFile = e.target.elements.picture.files[0];
 
-        // Basic image validation (size and type)
-        if (!imageFile.type.match('image/.*')) {
-          alert('Please select an image file.');
+        const allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
+
+        if (!allowedImageTypes.includes(imageFile.type)) {
+          alert('Please select a valid image file (JPEG, PNG, GIF, BMP, WEBP).');
           return;
         }
 
-        if (imageFile.size > 1024 * 1024 * 5) { // 5MB limit
-          alert('Image size cannot exceed 5MB.');
-          return;
-        }
-
-        formData.append('picture', imageFile);
+        // const compressedImage = await compressImage(imageFile);
+        // formData.append('picture', compressedImage);
       }
 
       const response = await fetch('http://localhost:4000/api/contribute', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
-      },
+          'Content-Type': 'application/json' // Might be multipart/form-data depending on server implementation
+        },
         body: formData, // Use FormData for multipart/form-data request
       });
       // Check for successful response (200 OK)
@@ -92,7 +101,6 @@ const Contribute = () => {
       setSubmitting(false); // Reset submitting state after submission
     }
   };
-
   return (
     <div className="contribute-container">
       <h2>Contribute Food</h2>
