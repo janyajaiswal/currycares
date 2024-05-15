@@ -1,16 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'; // Import createRoot
 import './index.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './stores/rootStore';
 
-ReactDOM.render(
+const container = document.getElementById('root'); // Reference container element
+const root = createRoot(container); // Create root using container
+
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
-      </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    </Provider>
+  </React.StrictMode>
 );

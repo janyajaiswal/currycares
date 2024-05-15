@@ -10,6 +10,7 @@ app.use(cors({ origin: 'http://localhost:3000' })); // Allow requests from http:
 
 toconnect(); // Call the function to establish the database connection
 
+app.use(express.json())
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header(
@@ -19,7 +20,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.json())
 app.use('/api', require("./Routes/CreateUser"));
 app.use('/api', require("./Routes/DisplayData"));
 app.use('/api', require("./Routes/ContributeDB.js"))

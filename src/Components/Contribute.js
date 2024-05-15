@@ -1,98 +1,90 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import './contribute.css';
-// import ReactImageCompression from 'react-image-compression';
-import ContributedFoodCard from './ContributedFoodCard'; // Import the ContributedFoodCard component
+import ContributedFoodCard from './ContributedFoodCard'; 
 
 const Contribute = () => {
-const navigate = useNavigate(); // Use useNavigate from react-router-dom
-const [foodData, setFoodData] = useState({
-    picture: '',
+  const myboundaryone = 'a boundary';
+  const [contributions, setContributions] = useState([]);
+  useEffect(() => {
+    const fetchContributions = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/contribute', {
+          method: 'GET',
+          headers:{ 'Content-Type': `multipart/form-data; boundary=${myboundaryone}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch contributions');
+        }
+
+        const data = await response.json();
+        setContributions(data); // Update state with fetched data
+      } catch (error) {
+        console.error('Error fetching contributions:', error);
+      }
+    };
+
+    fetchContributions();
+  }, []);
+
+  const [formData, setFormData] = useState({
+    picture: null, // Store image as a file object
     description: '',
     bestBeforeDate: '',
-    quantity: '',
-    price: '',
+    quantity: 0,
+    price: 0,
   });
 
-  const [contributions, setContributions] = useState([]); // State to store contributed food items
-  const [submitting, setSubmitting] = useState(false); // State to track form submission status
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFoodData((prevData) => ({
+  const handleChange = (event) => {
+    const { name, value, files } = event.target;
+    setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: name === 'picture' ? files[0] : value, // Handle image file separately
     }));
   };
 
-  const compressImage = async (imageFile) => {
-    const options = {
-      maxSizeMB: 1, // Adjust max size as needed (in MB)
-      maxWidthOrHeight: 800, // Optional: Max width or height
-    };
-  
-    // const compressor = new ReactImageCompression(imageFile, options);
-    // const compressedImage = await compressor.getBlob();
-    // return compressedImage;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true); // Set submitting state to true while submitting
+  const [submitting, setSubmitting] = useState(); // Track form submission state
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSubmitting(true); // Set submitting state
 
     try {
-      const formData = new FormData(); // Create a FormData object for image upload
+      const formData = new FormData(); // Create FormData for multipart data (image)
+      formData.append('picture', event.target.files[0]); // Append image file
+      formData.append('description', formData.description);
+      formData.append('bestBeforeDate', formData.bestBeforeDate);
+      formData.append('quantity', formData.quantity);
+      formData.append('price', formData.price);
 
-      // Add other form fields to FormData
-      formData.append('description', foodData.description);
-      formData.append('bestBeforeDate', foodData.bestBeforeDate);
-      formData.append('quantity', foodData.quantity);
-      formData.append('price', foodData.price);
-
-      // Add image file to FormData if selected
-      if (e.target.elements.picture.files.length > 0) {
-        const imageFile = e.target.elements.picture.files[0];
-
-        const allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
-
-        if (!allowedImageTypes.includes(imageFile.type)) {
-          alert('Please select a valid image file (JPEG, PNG, GIF, BMP, WEBP).');
-          return;
-        }
-
-        // const compressedImage = await compressImage(imageFile);
-        // formData.append('picture', compressedImage);
-      }
-
+      const myboundarytwo = 'yet another boundary';
       const response = await fetch('http://localhost:4000/api/contribute', {
         method: 'POST',
+        // Ensure Content-Type is set to multipart/form-data
         headers: {
-          'Content-Type': 'application/json' // Might be multipart/form-data depending on server implementation
+          'Content-Type': `multipart/form-data; boundary=${myboundarytwo}`,
         },
-        body: formData, // Use FormData for multipart/form-data request
+        body: formData,
       });
-      // Check for successful response (200 OK)
-      if (!response.ok) {
-        throw new Error(`Server responded with status: ${response.status}`);
-      }
-      const data = await response.json();
-      console.log(data);
 
-      if (response.ok) {
-        // Add the new contribution to the list of contributions
-        setContributions((prevContributions) => [...prevContributions, data]);
-        // Clear the form fields after successful submission
-        setFoodData({
-          picture: '',
+      if (response.status === 201) {
+        console.log('Contribution submitted successfully!');
+        setFormData({ // Clear form data on success
+          picture: null,
           description: '',
           bestBeforeDate: '',
           quantity: '',
           price: '',
         });
-        alert('Contribution submitted successfully!'); // Success message
+        alert('Contribution submitted!'); // Informative message
       } else {
-        console.error('Failed to submit food data');
-        alert('An error occurred. Please try again.'); // Informative error message
+        console.error('Error submitting contribution:', response.data);
+        // Check for specific error codes (e.g., 400 for bad request)
+        if (response.status === 400) {
+          alert('There was a problem with your submission. Please check the form and try again.');
+        } else {
+          alert('An error occurred. Please try again.'); // Informative error message
+        }
       }
     } catch (error) {
       console.error('Error:', error);
@@ -104,38 +96,42 @@ const [foodData, setFoodData] = useState({
   return (
     <div className="contribute-container">
       <h2>Contribute Food</h2>
-      <form onSubmit={handleSubmit} method='POST' encType='multipart/form-data'>
+      <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
         <div className="form-group">
           <label htmlFor="picture">Picture:</label>
-          <input type="file" id="picture" name="picture" onChange={handleChange} accept="" />
+          <input type="file" id="picture" name="picture" onChange={handleChange} accept="image/*" />
           <p>Supported image formats: JPEG, PNG, GIF</p>
         </div>
         <div className="form-group">
           <label htmlFor="description">Description:</label>
-          <textarea id="description" name="description" onChange={handleChange} value={foodData.description} required></textarea>
+          <textarea id="description" name="description" onChange={handleChange} value={formData.description} required></textarea>
         </div>
         <div className="form-group">
           <label htmlFor="bestBeforeDate">Best Before Date:</label>
-          <input type="date" id="bestBeforeDate" name="bestBeforeDate" onChange={handleChange} value={foodData.bestBeforeDate} required />
+          <input type="date" id="bestBeforeDate" name="bestBeforeDate" onChange={handleChange} value={formData.bestBeforeDate} required />
         </div>
         <div className="form-group">
           <label htmlFor="quantity">Quantity:</label>
-          <input type="number" id="quantity" name="quantity" onChange={handleChange} value={foodData.quantity} required />
+          <input type="number" id="quantity" name="quantity" onChange={handleChange} value={formData.quantity} required />
         </div>
         <div className="form-group">
           <label htmlFor="price">Price:</label>
-          <input type="number" id="price" name="price" onChange={handleChange} value={foodData.price} required />
+          <input type="number" id="price" name="price" onChange={handleChange} value={formData.price} required />
         </div>
         <button type="submit" disabled={submitting}>{submitting ? 'Submitting...' : 'Submit'}</button>
       </form>
-      
-      {/* Render contributed food cards */}
+
       <div className="contributions-list">
-        {contributions.map((food, index) => (
-          <ContributedFoodCard key={index} food={food} />
-        ))}
-      </div>
+      {contributions.length > 0 ? (
+        contributions.map((food) => (
+          <ContributedFoodCard key={food.id} food={food} />
+        ))
+      ) : (
+        <p>No contributions yet.</p>
+      )}
     </div>
+    </div>
+
   );
 };
 

@@ -14,19 +14,19 @@ export default function Signup() {
     setIsSignUpMode(false);
   };
 
-//-----------------------------ON-SUBMIT SIGNUP FORM------------------------------
+  //-----------------------------ON-SUBMIT SIGNUP FORM------------------------------
   
-  const [credentials, setcredentials] = useState({ name: "", email: "", password: "", geolocation: ""}) //useStateSnippet
+  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", geolocation: "" }); //useStateSnippet
 
-  const handleSubmit = async(e) => {// 'e' here is parameter(any variable) where function is being clicked
+  const handleSubmit = async (e) => {
     e.preventDefault();                   // **Synthetic event**
-    console.log(JSON.stringify({name: credentials.name,email:credentials.email, password:credentials.password,location: credentials.geolocation}))
+    console.log(JSON.stringify(credentials));
     const response = await fetch("http://localhost:4000/api/createuser", {//the route in CreateUser.js is named createuser(smalls)
       method: 'POST',                     //post method needs a body 
       headers: {
         'Content-Type': 'application/json'  //copy paste from thunder client
       },
-      body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation })
+      body: JSON.stringify(credentials)
       //these parameters must be same as body of backend
     });
 
@@ -39,48 +39,46 @@ export default function Signup() {
     }
     
   }
-//Function to allow user to type and it registers as value, else they remain static as initialized " " empty
-  const whenChange = (event) => {
-    setcredentials({...credentials,[event.target.name]:event.target.value})
+  //Function to allow user to type and it registers as value, else they remain static as initialized " " empty
+  const handleChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   }
 
   //----------------------------SIGN - IN PART------------------------------------
   
-const navigate = useNavigate();  
-const [loginCredentials, setLoginCredentials] = useState({ email: "", password: ""}); //useStateSnippet
+  const navigate = useNavigate();  
+  const [loginCredentials, setLoginCredentials] = useState({ email: "", password: ""}); //useStateSnippet
   
-const handleLogin = async (clickEvent) => {// 'clickEvent' here is parameter(any variable) where function is being clicked
-  clickEvent.preventDefault();                   // **Synthetic event**
-  console.log(JSON.stringify({ email: loginCredentials.email, password: loginCredentials.password }))
-  const loginResponse = await fetch("http://localhost:4000/api/loginuser", {//the route in CreateUser.js is named loginuser(smalls)
-    method: 'POST',                     //post method needs a body 
-    headers: {
-      'Content-Type': 'application/json'  //copy paste from thunder client
-    },
-    body: JSON.stringify({ email: loginCredentials.email, password: loginCredentials.password })
-    //these parameters must be same as body of backend
-  });
+  const handleLogin = async (e) => {
+    e.preventDefault();                   // **Synthetic event**
+    console.log(JSON.stringify(loginCredentials));
+    const loginResponse = await fetch("http://localhost:4000/api/loginuser", {//the route in CreateUser.js is named loginuser(smalls)
+      method: 'POST',                     //post method needs a body 
+      headers: {
+        'Content-Type': 'application/json'  //copy paste from thunder client
+      },
+      body: JSON.stringify(loginCredentials)
+      //these parameters must be same as body of backend
+    });
 
-  const jsonResponse = await loginResponse.json()
-  console.log(jsonResponse);
+    const jsonResponse = await loginResponse.json()
+    console.log(jsonResponse);
 
-  if (!jsonResponse.success) {
-    alert("Enter Valid Credentials")
-  }
-  
-  if (jsonResponse.success)
-  {
-    localStorage.setItem("authToken", jsonResponse.authToken);
-    console.log(localStorage.getItem("authToken"))
-    navigate("/");
+    if (!jsonResponse.success) {
+      alert("Enter Valid Credentials")
     }
-}
-//Function to allow user to type and it registers as value, else they remain static as initialized " " empty
-const handleLoginChange = (inputEvent) => {
-  setLoginCredentials({...loginCredentials,[inputEvent.target.name]:inputEvent.target.value})
-}
-
-
+    
+    if (jsonResponse.success)
+    {
+      localStorage.setItem("authToken", jsonResponse.authToken);
+      console.log(localStorage.getItem("authToken"))
+      navigate("/");
+    }
+  }
+  //Function to allow user to type and it registers as value, else they remain static as initialized " " empty
+  const handleLoginChange = (e) => {
+    setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value });
+  }
   return (
     <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
       <div className="forms-container">
@@ -91,11 +89,11 @@ const handleLoginChange = (inputEvent) => {
             <h2 className="title">Sign In</h2>
             <div className="input-field">
               <i className="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" value={loginCredentials.email}  onChange={handleLoginChange}/>
+              <input type="email" placeholder="Email" value={loginCredentials.email} onChange={handleLoginChange}/>
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" value={loginCredentials.password}  onChange={handleLoginChange}/>
+              <input type="password" placeholder="Password" value={loginCredentials.password} onChange={handleLoginChange}/>
             </div>
             {/*submit-button*/}
             <button type="submit" value="Login" className="btn" onClick={handleLogin}>Sign in</button>
@@ -123,22 +121,22 @@ const handleLoginChange = (inputEvent) => {
             <h2 className="title">Sign Up</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>                                                 {/*"whenChange" is the variable*/}
-              <input type="text" placeholder="Username" name='name' value={credentials.name} onChange={whenChange} /> 
+              <input type="text" placeholder="Username" name='name' value={credentials.name} onChange={handleChange} /> 
             </div>
             <div className="input-field">
               <i className="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name='email' value={credentials.email} onChange={whenChange}/>
+              <input type="email" placeholder="Email" name='email' value={credentials.email} onChange={handleChange}/>
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name='password' value={credentials.password} onChange={whenChange}/>
+              <input type="password" placeholder="Password" name='password' value={credentials.password} onChange={handleChange}/>
             </div>
             <div className="input-field">
             <i className="fa-solid fa-address-book"></i>
-              <input type="text" placeholder="Address" name='geolocation' value={credentials.geolocation} onChange={whenChange}/>
+              <input type="text" placeholder="Address" name='geolocation' value={credentials.geolocation} onChange={handleChange}/>
             </div>
             {/*submit-button*/}
-            <input type="submit" value="Sign Up" className="btn solid" />
+            <input type="submit" value="Sign Up" className="btn" />
 
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">

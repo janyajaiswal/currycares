@@ -21,7 +21,7 @@ conn.once('open', () => {
     url: mongoURI,
     file: (req, file) => {
       return new Promise((resolve, reject) => {
-        const filename = `${Date.now()}-${file.originalname}`;
+        const filename = file.originalname;
         const fileInfo = {
           filename: filename,
           bucketName: 'Contribute', // Use your collection name (Contribute)

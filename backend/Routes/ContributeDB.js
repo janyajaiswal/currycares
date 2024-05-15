@@ -9,21 +9,21 @@ const upload = multer({ storage }); // Use GridFS storage for uploads
 // POST route to upload contributed food data and image
 router.post('/contribute', upload.single('picture'), async (req, res) => {
   try {
-    if (!req.files) {
+    // Check if image file was uploaded
+    if (!req.file) {
       return res.status(400).json({ error: 'No image file uploaded. Please select an image to contribute.' });
     }
 
     const { description, bestBeforeDate, quantity, price } = req.body;
-
-    const filename = req.files[0].filename; // Get uploaded image filename
-
+    // Get uploaded image filename (assuming single image upload)
+    
     const newContribute = await ContributedFoodModel.create({
       description: req.body.description,
       bestBeforeDate: req.body.bestBeforeDate,
       quantity: req.body.quantity,
       price: req.body.price,
-      // Add image filename if applicable
-      picture: req.files ? req.files[0].filename : undefined, // Optional for image upload
+      // Include image filename if uploaded
+      picture: req.file.filename, // Include the filename in the model object
     });
 
     res.status(201).json({ message: 'Contribution added successfully' });
@@ -33,14 +33,12 @@ router.post('/contribute', upload.single('picture'), async (req, res) => {
   }
 });
 
-
+// GET route to fetch contributed food items
 router.get('/contribute', async (req, res) => {
   try {
     // Retrieve all contributed food items from the database
     const contributedFood = await ContributedFoodModel.find();
-
-    // Respond with the retrieved data
-    res.json(contributedFood);
+    res.json(contributedFood);   // Respond with the retrieved data
   } catch (error) {
     // Handle errors
     console.error('Error fetching contributed food:', error);

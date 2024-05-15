@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const contributeSchema = new mongoose.Schema({
   picture: {
     type: String, // Store the GridFS filename here
-    required: true, // Allow contributions without images
+    required: false, // Allow contributions without images
   },
   description: {
     type: String,
