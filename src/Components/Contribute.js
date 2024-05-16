@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './contribute.css';
 import ContributedFoodCard from './ContributedFoodCard'; 
 
@@ -10,8 +10,8 @@ const Contribute = () => {
       try {
         const response = await fetch('http://localhost:4000/api/contribute', {
           method: 'GET',
-          headers:{ 'Content-Type': `multipart/form-data; boundary=${myboundaryone}`,
-          },
+          // headers:{ 'Content-Type': `multipart/form-data; boundary=${myboundaryone}`,
+          // },
         });
 
         if (!response.ok) {
@@ -38,65 +38,87 @@ const Contribute = () => {
 
   const handleChange = (event) => {
     const { name, value, files } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: name === 'picture' ? files[0] : value, // Handle image file separately
-    }));
+    setTimeout(() => {
+      const file = files && files.length > 0 ? files[0] : null; // Check if files is defined and not empty
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: name === 'picture' ? file || null : value, // Handle image file with null for no selection
+      }));
+      console.log('formData.picture:', file); // Log the file object, not formData.picture
+    }, 100); // Adjust timeout as needed (milliseconds)
   };
-
-  const [submitting, setSubmitting] = useState(); // Track form submission state
+  
+  const [submitting, setSubmitting] = useState(false); // Track form submission state
+  const formRef = useRef(null);
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const form = formRef.current; 
     setSubmitting(true); // Set submitting state
-
-    try {
-      const formData = new FormData(); // Create FormData for multipart data (image)
-      formData.append('picture', event.target.files[0]); // Append image file
-      formData.append('description', formData.description);
-      formData.append('bestBeforeDate', formData.bestBeforeDate);
-      formData.append('quantity', formData.quantity);
-      formData.append('price', formData.price);
-
-      const myboundarytwo = 'yet another boundary';
-      const response = await fetch('http://localhost:4000/api/contribute', {
-        method: 'POST',
-        // Ensure Content-Type is set to multipart/form-data
-        headers: {
-          'Content-Type': `multipart/form-data; boundary=${myboundarytwo}`,
-        },
-        body: formData,
-      });
-
-      if (response.status === 201) {
-        console.log('Contribution submitted successfully!');
-        setFormData({ // Clear form data on success
-          picture: null,
-          description: '',
-          bestBeforeDate: '',
-          quantity: '',
-          price: '',
-        });
-        alert('Contribution submitted!'); // Informative message
-      } else {
-        console.error('Error submitting contribution:', response.data);
-        // Check for specific error codes (e.g., 400 for bad request)
-        if (response.status === 400) {
-          alert('There was a problem with your submission. Please check the form and try again.');
+  
+    if (contributions.length > 0) { // Check if contributions data is available
+      try {
+        const formData = new FormData();// Create FormData for multipart data (image)
+  
+        // Validate file selection before appending
+        if (formData.picture) { // Check if formData.picture is not null or undefined
+          formData.append('picture', formData.picture); 
         } else {
-          alert('An error occurred. Please try again.'); // Informative error message
+          console.error('No image file selected');
+          alert('Please select an image file to contribute.');
+          setSubmitting(false); // Reset submitting state on validation error
+          return; // Exit the function if no file is selected
         }
+  
+        // Append other form data properties
+        formData.append('description', formData.description);
+        formData.append('bestBeforeDate', formData.bestBeforeDate);
+        formData.append('quantity', formData.quantity);
+        formData.append('price', formData.price);
+
+        const myboundarytwo = 'yet another boundary';
+        const response = await fetch('http://localhost:4000/api/contribute', {
+          method: 'POST',
+          // Ensure Content-Type is set to multipart/form-data
+          headers: {
+            'Content-Type': `multipart/form-data; boundary=${myboundarytwo}`,
+          },
+          body: formData,
+        });
+
+        if (response.status === 201) {
+          console.log('Contribution submitted successfully!');
+          setFormData({ // Clear form data on success
+            picture: null,
+            description: '',
+            bestBeforeDate: '',
+            quantity: '',
+            price: '',
+          });
+          alert('Contribution submitted!'); // Informative message
+        } else {
+          console.error('Error submitting contribution:', response.data);
+          // Check for specific error codes (e.g., 400 for bad request)
+          if (response.status === 400) {
+            alert('There was a problem with your submission. Please check the form and try again.');
+          } else {
+            alert('An error occurred. Please try again.'); // Informative error message
+          }
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.'); // Informative error message
+      } finally {
+        setSubmitting(false); // Reset submitting state after submission
       }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.'); // Informative error message
-    } finally {
-      setSubmitting(false); // Reset submitting state after submission
+    } else {
+      console.log('Contributions data not yet available');
     }
   };
+
   return (
     <div className="contribute-container">
       <h2>Contribute Food</h2>
-      <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
+      <form onSubmit={handleSubmit}  ref={formRef} action="/contribute" method="POST" encType="multipart/form-data">
         <div className="form-group">
           <label htmlFor="picture">Picture:</label>
           <input type="file" id="picture" name="picture" onChange={handleChange} accept="image/*" />
@@ -131,7 +153,6 @@ const Contribute = () => {
       )}
     </div>
     </div>
-
   );
 };
 

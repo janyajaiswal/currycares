@@ -9,35 +9,6 @@ import Contribute from '../Components/Contribute';
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Delivery");
-  const [foodCat, setFoodCat] = useState([]);
-  const [foodItem, setFoodItem] = useState([]);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await fetch("http://localhost:4000/api/foodData", {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-
-        const data = await response.json();
-        console.log("Data:", data); // Log the data received from the server
-        if (Array.isArray(data) && data.length >= 2) {
-          setFoodItem(data[0]);
-          setFoodCat(data[1]);
-        } else {
-          console.error("Invalid data format received from server");
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    loadData();
-  }, []); // Empty dependency array to ensure useEffect runs only once
-
   return (
     <div>
       <Navbar />
